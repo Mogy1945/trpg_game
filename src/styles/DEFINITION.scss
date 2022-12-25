@@ -1,0 +1,46 @@
+$darkColor: rgb(27, 27, 27);
+
+@mixin mainStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  color: rgb(231, 231, 231);
+}
+
+@mixin containerStyle {
+  @include flexBoxCol;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin flexBoxCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexBoxRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin displayMain {
+  background-color: antiquewhite;
+  height: 75%;
+  width: 100%;
+}
+
+@mixin displayTextStyle {
+  @include flexBoxRow;
+  height: 35%;
+  width: 100%;
+  background-color: $darkColor;
+  border: 5px double white;
+  padding: 0 1rem;
+}

@@ -1,0 +1,34 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  color: rgb(231, 231, 231);
+}
+.main .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.main .container .displayMain {
+  background-color: antiquewhite;
+  height: 75%;
+  width: 100%;
+}
+.main .container .displayTextarea {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 35%;
+  width: 100%;
+  background-color: rgb(27, 27, 27);
+  border: 5px double white;
+  padding: 0 1rem;
+}
+/*# sourceMappingURL=Explanation.module.css.map */

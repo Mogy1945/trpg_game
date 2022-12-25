@@ -1,0 +1,17 @@
+@use 'DEFINITION';
+
+.main {
+  @include DEFINITION.mainStyle;
+
+  .container {
+    @include DEFINITION.containerStyle;
+
+    .displayMain {
+      @include DEFINITION.displayMain;
+    }
+
+    .displayTextarea {
+      @include DEFINITION.displayTextStyle;
+    }
+  }
+}
