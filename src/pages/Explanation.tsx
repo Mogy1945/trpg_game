@@ -1,7 +1,29 @@
 import Head from 'next/head'
 import styles from '../styles/Explanation.module.scss'
+import ExplanationText from 'src/components/Explanation/ExplanationText'
+import { useState } from 'react'
 
 const Explanation: React.FC = () => {
+  const [step, setStep] = useState(0)
+  const textData = [
+    {
+      step: 0,
+      name: '【GM】',
+      first: 'はじめまして。',
+      second: 'プレイいただきありがとうございます。',
+      third: '本作をプレイするにあたって、いくつか説明をさせていただきます。',
+    },
+    {
+      step: 1,
+      name: '【GM】',
+      first: 'tes',
+      second: 'tes',
+      third: 'tes',
+    },
+  ]
+  const nextText = () => {
+    setStep(step + 1)
+  }
   return (
     <>
       <Head>
@@ -13,12 +35,20 @@ const Explanation: React.FC = () => {
       <main className={styles.main}>
         <div className={styles.container}>
           <div className={styles.displayMain}>s</div>
-          <div className={styles.displayTextarea}>
+          <div className={styles.displayTextarea} onClick={nextText}>
             <div className={styles.displayText}>
-              <p>【GM】</p>
-              <p>はじめまして。</p>
-              <p>プレイいただきありがとうございます。</p>
-              <p>本作をプレイするにあたって、いくつか説明をさせていただきます。</p>
+              {textData.map((obj) =>
+                step === obj.step ? (
+                  <ExplanationText
+                    name={obj.name}
+                    first={obj.first}
+                    second={obj.second}
+                    third={obj.third}
+                  />
+                ) : (
+                  ''
+                ),
+              )}
             </div>
           </div>
         </div>
