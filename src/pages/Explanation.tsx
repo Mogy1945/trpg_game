@@ -1,28 +1,21 @@
 import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
 import styles from '../styles/Explanation.module.scss'
 import ExplanationText from 'src/components/Explanation/ExplanationText'
-import { useState } from 'react'
+import { mainDataExplanation } from 'src/data/Explanation/main'
+import { textDataExplanation } from 'src/data/Explanation/text'
 
 const Explanation: React.FC = () => {
   const [step, setStep] = useState(0)
-  const textData = [
-    {
-      step: 0,
-      name: '【GM】',
-      first: 'はじめまして。',
-      second: 'プレイいただきありがとうございます。',
-      third: '本作をプレイするにあたって、いくつか説明をさせていただきます。',
-    },
-    {
-      step: 1,
-      name: '【GM】',
-      first: 'tes',
-      second: 'tes',
-      third: 'tes',
-    },
-  ]
+  const dataLength = textDataExplanation.length
+
   const nextText = () => {
-    setStep(step + 1)
+    console.log(step)
+    if (step < dataLength) {
+      setStep(step + 1)
+    }
   }
   return (
     <>
@@ -34,12 +27,25 @@ const Explanation: React.FC = () => {
       </Head>
       <main className={styles.main}>
         <div className={styles.container}>
-          <div className={styles.displayMain}>s</div>
+          <div className={styles.displayMainarea}>
+            <Image
+              src={
+                step < dataLength
+                  ? mainDataExplanation[step].imageUrl
+                  : 'https://images.unsplash.com/photo-1537420327992-d6e192287183?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80'
+              }
+              height={500}
+              width={500}
+              alt=''
+            />
+            <p>サンプル画像</p>
+          </div>
           <div className={styles.displayTextarea} onClick={nextText}>
             <div className={styles.displayText}>
-              {textData.map((obj) =>
+              {textDataExplanation.map((obj) =>
                 step === obj.step ? (
                   <ExplanationText
+                    key={obj.step}
                     name={obj.name}
                     first={obj.first}
                     second={obj.second}
@@ -48,6 +54,13 @@ const Explanation: React.FC = () => {
                 ) : (
                   ''
                 ),
+              )}
+              {step === dataLength ? (
+                <Link href='/'>
+                  <p className={styles.toTopBtn}>トップページに戻る</p>
+                </Link>
+              ) : (
+                ''
               )}
             </div>
           </div>

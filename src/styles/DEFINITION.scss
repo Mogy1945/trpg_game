@@ -1,4 +1,6 @@
+$whiteColor: rgb(231, 231, 231);
 $darkColor: rgb(27, 27, 27);
+$transitionVal: 0.2s cubic-bezier(0.45, 0, 0.55, 1);
 
 @mixin mainStyle {
   display: flex;

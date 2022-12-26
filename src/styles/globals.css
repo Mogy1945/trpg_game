@@ -12,3 +12,8 @@ body {
   line-height: 1.3em;
   font-family: mainFont, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+a {
+  text-decoration: none;
+  color: rgb(231, 231, 231);
+}

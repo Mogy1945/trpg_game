@@ -6,12 +6,40 @@
   .container {
     @include DEFINITION.containerStyle;
 
-    .displayMain {
+    .displayMainarea {
       @include DEFINITION.displayMain;
+      p {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        font-size: 3rem;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .displayTextarea {
       @include DEFINITION.displayTextStyle;
+      position: relative;
+
+      .toTopBtn {
+        border: 1px solid DEFINITION.$whiteColor;
+        padding: 2rem;
+        transition: DEFINITION.$transitionVal;
+
+        &:hover {
+          background-color: DEFINITION.$whiteColor;
+          color: DEFINITION.$darkColor;
+        }
+
+        &:active {
+          background-color: DEFINITION.$whiteColor;
+          color: DEFINITION.$darkColor;
+        }
+      }
     }
   }
 }
