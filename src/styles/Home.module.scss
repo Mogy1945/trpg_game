@@ -4,6 +4,31 @@
   @include DEFINITION.mainStyle;
   width: 100vw;
   height: 100vh;
-  background-image: url(https://images.unsplash.com/photo-1563785448902-f65e1b3d1fc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80);
+  background-image: url(https://images.unsplash.com/photo-1518709268805-4e9042af9f23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=384&q=80);
   background-size: cover;
+
+  .titleArea {
+    background-color: rgba(DEFINITION.$darkColor, 0.6);
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+
+    .titleAreaText {
+      width: 50%;
+      border: 1px solid DEFINITION.$whiteColor;
+      padding: 1rem 0.1rem;
+      margin: 1.5rem auto 0;
+      transition: DEFINITION.$transitionVal;
+
+      &:hover {
+        background-color: DEFINITION.$whiteColor;
+        color: DEFINITION.$darkColor;
+      }
+
+      &:active {
+        background-color: DEFINITION.$whiteColor;
+        color: DEFINITION.$darkColor;
+      }
+    }
+  }
 }

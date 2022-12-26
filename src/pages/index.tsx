@@ -3,8 +3,8 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.scss'
 
 export default function Home() {
-  const testData = {
-    step: 0,
+  const userData = {
+    gameStep: 1,
     playerData: {
       attack: 0,
     },
@@ -21,11 +21,20 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className={styles.main}>
-        <Link href='Explanation'>
-          <p>始めて本ゲームをする方はこちらから</p>
-        </Link>
-        <p>はじめから</p>
-        <p>つづきから</p>
+        <div className={styles.titleArea}>
+          <h1>TRPGクエスト</h1>
+          <Link href='Explanation'>
+            <p className={styles.titleAreaText}>はじめに</p>
+          </Link>
+          {userData.gameStep > 0 ? (
+            <Link href='CharacterCreate'>
+              <p className={styles.titleAreaText}>はじめから</p>
+            </Link>
+          ) : (
+            ''
+          )}
+          {userData.gameStep > 1 ? <p className={styles.titleAreaText}>つづきから</p> : ''}
+        </div>
       </main>
     </>
   )

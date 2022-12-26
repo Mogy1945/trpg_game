@@ -41,6 +41,7 @@ const Explanation: React.FC = () => {
             <p>サンプル画像</p>
           </div>
           <div className={styles.displayTextarea} onClick={nextText}>
+            {/* 「はじめに」終了後にgameStepを「1」にする */}
             <div className={styles.displayText}>
               {textDataExplanation.map((obj) =>
                 step === obj.step ? (

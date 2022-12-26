@@ -1,0 +1,10 @@
+@use 'DEFINITION';
+
+.main {
+  @include DEFINITION.mainStyle;
+  color: DEFINITION.$darkColor;
+
+  .container {
+    @include DEFINITION.containerStyle;
+  }
+}
