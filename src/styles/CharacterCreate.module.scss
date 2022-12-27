@@ -3,8 +3,53 @@
 .main {
   @include DEFINITION.mainStyle;
   color: DEFINITION.$darkColor;
+  background-color: rgb(222, 230, 252);
 
   .container {
     @include DEFINITION.containerStyle;
+
+    .characterSection {
+      width: 85vw;
+      margin-top: 2rem;
+      padding: 1rem;
+      text-align: center;
+      .sectionTitle {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      label {
+        width: 100%;
+        display: block;
+        span {
+          display: inline-block;
+          width: 18%;
+          opacity: 0.8;
+        }
+        input {
+          width: 50%;
+        }
+        select {
+          width: 50%;
+        }
+      }
+    }
+
+    .toGameBtn {
+      border: 1px solid DEFINITION.$whiteColor;
+      padding: 1rem 0.5rem;
+      margin: 1.5rem auto 0;
+      transition: DEFINITION.$transitionVal;
+      background-color: rgb(43, 88, 172);
+
+      &:hover {
+        background-color: DEFINITION.$whiteColor;
+        color: DEFINITION.$darkColor;
+      }
+
+      &:active {
+        background-color: DEFINITION.$whiteColor;
+        color: DEFINITION.$darkColor;
+      }
+    }
   }
 }

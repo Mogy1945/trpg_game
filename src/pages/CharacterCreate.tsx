@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/CharacterCreate.module.scss'
 
 const Explanation: React.FC = () => {
@@ -12,47 +13,59 @@ const Explanation: React.FC = () => {
       </Head>
       <main className={styles.main}>
         <div className={styles.container}>
-          <p>出生</p>
-          <label htmlFor='characterName'>
-            <span>名前</span>
-            <input id='characterName' type='text' placeholder='アントニー' />
-          </label>
-          <label htmlFor='characterAge'>
-            <span>年齢</span>
-            <input id='characterAge' type='number' placeholder='28' />
-          </label>
-          <label htmlFor='characterProfession'>
-            <span>職業</span>
-            <select name='Professions' id='characterProfession'>
-              <option value='1'>探偵</option>
-              <option value='2'>警察</option>
-              <option value='3'>医者</option>
-              <option value='4'>教師</option>
-              <option value='5'>エンジニア</option>
-            </select>
-          </label>
-          <p>能力値</p>
-          <div className={styles.bornBox}>
-            <label htmlFor='strength'>
-              <span>筋力</span>
-              <input id='strength' type='text' />
+          <div className={styles.characterSection}>
+            <p className={styles.sectionTitle}>出生</p>
+            <label htmlFor='characterName'>
+              <span>名前</span>
+              <input id='characterName' type='text' placeholder='アントニー' />
             </label>
+            <label htmlFor='characterAge'>
+              <span>年齢</span>
+              <input id='characterAge' type='number' placeholder='28' />
+            </label>
+            <label htmlFor='characterProfession'>
+              <span>職業</span>
+              <select name='Professions' id='characterProfession'>
+                <option value='0'>▼選択して下さい</option>
+                <option value='1'>探偵</option>
+                <option value='2'>警察</option>
+                <option value='3'>医者</option>
+                <option value='4'>教師</option>
+                <option value='5'>エンジニア</option>
+              </select>
+            </label>
+          </div>
+          <div className={styles.characterSection}>
+            <p className={styles.sectionTitle}>能力値</p>
+            <div className={styles.bornBox}>
+              <label htmlFor='strength'>
+                <span>筋力</span>
+                <input id='strength' type='number' />
+              </label>
+            </div>
+            <div className={styles.bornBox}>
+              <label htmlFor='agile'>
+                <span>敏捷</span>
+                <input id='agile' type='number' />
+              </label>
+            </div>
+            <div className={styles.bornBox}>
+              <label htmlFor='resistance'>
+                <span>抵抗力</span>
+                <input id='resistance' type='number' />
+              </label>
+            </div>
+            <div className={styles.bornBox}>
+              <label htmlFor='luck'>
+                <span>運</span>
+                <input id='luck' type='number' />
+              </label>
+            </div>
             <button>ダイスを振る</button>
           </div>
-          <div className={styles.bornBox}>
-            <label htmlFor='agile'>
-              <span>敏捷</span>
-              <input id='agile' type='text' />
-            </label>
-            <button>ダイスを振る</button>
-          </div>
-          <div className={styles.bornBox}>
-            <label htmlFor='strength'>
-              <span>敏捷</span>
-              <input id='strength' type='text' />
-            </label>
-            <button>ダイスを振る</button>
-          </div>
+          <Link href='/'>
+            <p className={styles.toGameBtn}>冒険を開始する</p>
+          </Link>
         </div>
       </main>
     </>
