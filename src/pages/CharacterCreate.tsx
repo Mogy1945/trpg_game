@@ -1,8 +1,134 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 import styles from '../styles/CharacterCreate.module.scss'
 
 const Explanation: React.FC = () => {
+  const [prm, setPrm] = useState({
+    strength: 0,
+    agile: 0,
+    resistance: 0,
+    luck: 0,
+  })
+  const [skill, setSkill] = useState([
+    {
+      name: '',
+      skills: ['', '', '', '', '', '', '', '', '', ''],
+    },
+  ])
+
+  const professions = [
+    {
+      name: '探偵',
+      skills: [
+        '推理',
+        '言いくるめ',
+        '写真鑑識',
+        '人物プロファイル作成',
+        '犯人捜査',
+        '事件解決',
+        '偽証鑑定',
+        '監視技術',
+        '隠れ家発見',
+        '現場勘査',
+      ],
+    },
+    {
+      name: '警察',
+      skills: [
+        '武器操作',
+        '追跡',
+        '銃弾識別',
+        '銃声判別',
+        '防犯知識',
+        '交通事故対応',
+        '犯人逮捕',
+        '証言取り',
+        '人質解放',
+        '情報収集',
+      ],
+    },
+    {
+      name: '医者',
+      skills: [
+        '診断',
+        '手術',
+        '救急処置',
+        '薬剤の管理',
+        '患者の看護',
+        '病院の管理',
+        '医学知識の習得',
+        '研究',
+        '処方箋の発行',
+        '保健指導',
+      ],
+    },
+    {
+      name: '教師',
+      skills: [
+        'カリキュラム開発',
+        '授業プランニング',
+        '生徒の指導',
+        '評価',
+        '行動管理',
+        '校内外の情報収集',
+        '生徒サポート',
+        'プレゼンテーション',
+        '教育研修',
+        '学習指導',
+      ],
+    },
+    {
+      name: 'エンジニア',
+      skills: [
+        'プログラミング',
+        'システムデザイン',
+        'データベース設計',
+        'テスト',
+        'トラブルシューティング',
+        '設計',
+        '性能評価',
+        'API開発',
+        'マニュアル作成',
+        'サービス開発',
+      ],
+    },
+  ]
+
+  const diceCharacter = () => {
+    const maxPrm = 20
+
+    let strength = Math.floor(Math.random() * (10 - 1) + 1)
+    if (strength > 10) {
+      strength = 10
+    }
+    let strengthNext = maxPrm - strength
+    let agile = Math.floor(Math.random() * (10 - 1) + 1)
+    let agileNext = strengthNext - agile
+    if (agile > 10) {
+      strength = 10
+    }
+    let resistance = Math.floor(Math.random() * (10 - 1) + 1)
+    let resistanceNext = agileNext - resistance
+    if (resistanceNext < 0) {
+      resistance = resistance + resistanceNext
+      resistanceNext = 0
+    }
+    let luck = resistanceNext
+
+    setPrm({
+      strength: strength,
+      agile: agile,
+      resistance: resistance,
+      luck: luck,
+    })
+  }
+
+  const setSkills = (e: { target: { value: any } }) => {
+    setSkill(professions[Number(e.target.value) - 1])
+
+    console.log(skill)
+  }
   return (
     <>
       <Head>
@@ -25,7 +151,7 @@ const Explanation: React.FC = () => {
             </label>
             <label htmlFor='characterProfession'>
               <span>職業</span>
-              <select name='Professions' id='characterProfession'>
+              <select name='Professions' id='characterProfession' onChange={setSkills}>
                 <option value='0'>▼選択して下さい</option>
                 <option value='1'>探偵</option>
                 <option value='2'>警察</option>
@@ -40,28 +166,58 @@ const Explanation: React.FC = () => {
             <div className={styles.bornBox}>
               <label htmlFor='strength'>
                 <span>筋力</span>
-                <input id='strength' type='number' />
+                <input id='strength' type='number' value={5 + prm.strength} readOnly />
               </label>
             </div>
             <div className={styles.bornBox}>
               <label htmlFor='agile'>
                 <span>敏捷</span>
-                <input id='agile' type='number' />
+                <input id='agile' type='number' value={5 + prm.agile} readOnly />
               </label>
             </div>
             <div className={styles.bornBox}>
               <label htmlFor='resistance'>
                 <span>抵抗力</span>
-                <input id='resistance' type='number' />
+                <input id='resistance' type='number' value={5 + prm.resistance} readOnly />
               </label>
             </div>
             <div className={styles.bornBox}>
               <label htmlFor='luck'>
                 <span>運</span>
-                <input id='luck' type='number' />
+                <input id='luck' type='number' value={5 + prm.luck} readOnly />
               </label>
             </div>
-            <button>ダイスを振る</button>
+            <p>合計値：40</p>
+            <button onClick={diceCharacter}>ダイスを振る</button>
+          </div>
+          <div className={styles.characterSection}>
+            <p className={styles.sectionTitle}>スキル</p>
+            <div className={styles.bornBox}>
+              <label htmlFor='strength'>
+                <span>筋力</span>
+                <input id='strength' type='number' value={5 + prm.strength} readOnly />
+              </label>
+            </div>
+            <div className={styles.bornBox}>
+              <label htmlFor='agile'>
+                <span>敏捷</span>
+                <input id='agile' type='number' value={5 + prm.agile} readOnly />
+              </label>
+            </div>
+            <div className={styles.bornBox}>
+              <label htmlFor='resistance'>
+                <span>抵抗力</span>
+                <input id='resistance' type='number' value={5 + prm.resistance} readOnly />
+              </label>
+            </div>
+            <div className={styles.bornBox}>
+              <label htmlFor='luck'>
+                <span>運</span>
+                <input id='luck' type='number' value={5 + prm.luck} readOnly />
+              </label>
+            </div>
+            <p>合計値：40</p>
+            <button onClick={diceCharacter}>ダイスを振る</button>
           </div>
           <Link href='/'>
             <p className={styles.toGameBtn}>冒険を開始する</p>
