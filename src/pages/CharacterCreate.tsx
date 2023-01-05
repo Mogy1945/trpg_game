@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import styles from '../styles/CharacterCreate.module.scss'
 
 const Explanation: React.FC = () => {
@@ -10,14 +10,36 @@ const Explanation: React.FC = () => {
     resistance: 0,
     luck: 0,
   })
-  const [skill, setSkill] = useState([
+  //   const profiles: {
+  //     name: string;
+  //     skills: string[];
+  // }[]
+  // const setProfiles: Dispatch<SetStateAction<{
+  //   name: string;
+  //   skills: string[];
+  // }[]>>
+
+  const [profiles, setProfiles]: [
+    {
+      name: string
+      skills: string[]
+    }[],
+    Dispatch<
+      SetStateAction<
+        {
+          name: string
+          skills: string[]
+        }[]
+      >
+    >,
+  ] = useState([
     {
       name: '',
       skills: ['', '', '', '', '', '', '', '', '', ''],
     },
   ])
 
-  const professions = [
+  const professions: SetStateAction<{ name: string; skills: string[] }[]> = [
     {
       name: '探偵',
       skills: [
@@ -125,9 +147,11 @@ const Explanation: React.FC = () => {
   }
 
   const setSkills = (e: { target: { value: any } }) => {
-    setSkill(professions[Number(e.target.value) - 1])
+    let nowProfession = professions[Number(e.target.value) - 1]
+    console.log(nowProfession)
+    setProfiles(nowProfession)
 
-    console.log(skill)
+    // console.log(profiles)
   }
   return (
     <>

@@ -2,6 +2,7 @@
 
 .main {
   @include DEFINITION.mainStyle;
+  height: auto;
   color: DEFINITION.$darkColor;
   background-color: rgb(222, 230, 252);
 
